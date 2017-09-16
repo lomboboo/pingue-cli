@@ -10,7 +10,21 @@ const messages = {
 		finished: ( project_name ) => `SUCCESS! New project ${project_name} has been created.`,
 		npm_start: 'Installing dependencies...',
 		npm_failed: 'Package install failed, see above.',
-		npm_finished: 'Installed packages for tooling via npm.'
+		npm_finished: 'Installed packages for tooling via npm.',
+	},
+
+	colors: {
+		light_green: '#6CED05'
+	},
+
+	settings: {
+		json_name: "pingue_cli.json",
+		json_save: "Saving settings...",
+		json_saved: "Settings file was saved",
+	},
+
+	questions: {
+		preprocessors_choice_error: "Please enter one of two possible options"
 	}
 };
 
