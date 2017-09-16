@@ -28,7 +28,6 @@
 		"clui": "^0.3.6",
 		"commander": "^2.11.0",
 		"figlet": "^1.2.0",
-		"github": "^11.0.0",
 		"inquirer": "^3.2.3",
 		"lodash": "^4.17.4",
 		"preferences": "^0.2.1",
