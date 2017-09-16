@@ -1,25 +1,37 @@
 {
-  "name": "pingue-cli",
-  "version": "1.0.0",
-  "description": "Javascript interactive command-line application",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com/lomboboo/pingue-cli.git"
-  },
-  "keywords": [
-    "cli",
-    "javasript",
-    "nodejs",
-    "npm"
-  ],
-  "author": "lomboboo",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/lomboboo/pingue-cli/issues"
-  },
-  "homepage": "https://github.com/lomboboo/pingue-cli#readme"
+	"name": "pingue-cli",
+	"version": "1.0.0",
+	"description": "Javascript interactive command-line application",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+ssh://git@github.com/lomboboo/pingue-cli.git"
+	},
+	"keywords": [
+		"cli",
+		"javasript",
+		"nodejs",
+		"npm"
+	],
+	"author": "lomboboo",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/lomboboo/pingue-cli/issues"
+	},
+	"homepage": "https://github.com/lomboboo/pingue-cli#readme",
+	"dependencies": {
+		"chalk": "^2.1.0",
+		"clear": "0.0.1",
+		"clui": "^0.3.6",
+		"commander": "^2.11.0",
+		"figlet": "^1.2.0",
+		"github": "^11.0.0",
+		"inquirer": "^3.2.3",
+		"lodash": "^4.17.4",
+		"preferences": "^0.2.1",
+		"simple-git": "^1.77.0"
+	}
 }
