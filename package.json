@@ -1,6 +1,9 @@
 {
 	"name": "pingue-cli",
 	"version": "1.0.0",
+	"bin": {
+		"pq": "./index.js"
+	},
 	"description": "Javascript interactive command-line application",
 	"main": "index.js",
 	"scripts": {
