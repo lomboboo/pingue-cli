@@ -1,10 +1,6 @@
 const chalk = require( 'chalk' );
-const clear = require( 'clear' );
 const figlet = require( 'figlet' );
 const inquirer = require( 'inquirer' );
-const Preferences = require( 'preferences' );
-const _ = require( 'lodash' );
-const fs = require( 'fs' );
 const program = require( 'commander' );
 
 const { create } = require( './lib/commands/new' );
@@ -34,17 +30,18 @@ let init = () => {
 
 				let pingue_settings = {
 					preprocessor: answers.preprocessor,
-					port: answers.port
+					port: answers.port,
+					bootstrap: answers.bootstrap
 				};
-				file.saveJson( project_directory, pingue_settings );
-/*				create( project_name )
+				// file.saveJson( project_directory, pingue_settings );
+				create( project_name )
 					.then( () => file.saveJson( project_directory, pingue_settings ))
 					.then( () => {
 						process.stdout.write( '\n' );
 						console.log( chalk.green( messages.create.finished( project_name ) ) );
 						process.exit();
 					})
-					.catch( ( err ) => chalk.red( err ) );*/
+					.catch( ( err ) => chalk.red( err ) );
 			} );
 		} );
 

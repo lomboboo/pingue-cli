@@ -24,8 +24,12 @@ const messages = {
 	},
 
 	questions: {
+		preprocessors_choice_message: "Choose preprocessor (less, scss):",
 		preprocessors_choice_error: "Please enter one of two possible options.",
-		port_input_error: "Entered value must be a number and higher or equals 3000."
+		port_input_message: "Enter port of the webpack dev server:",
+		port_input_error: "Entered value must be a number and higher or equals 3000.",
+		bootstrap_choice_message: "Bootstrap version (3, 4):",
+		bootstrap_choice_error: "Please enter one of two possible options."
 	}
 };
 
