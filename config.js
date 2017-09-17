@@ -1,16 +1,22 @@
 const repo = 'https://github.com/lomboboo/webpack-typescript-boilerplate.git';
 
+const project_directories = {
+	stylesheets: 'src/stylesheets'
+};
+
 const messages = {
 	create: {
 		start: 'Creating new project, please wait...',
 		git_remove: 'Git diretory removed.',
 		git_clone_start: 'Cloning repository...',
-		git_clone_succeed: 'Repository has been cloned',
+		git_clone_succeed: 'Repository have been cloned.',
 		directory_exists: `already exists`,
-		finished: ( project_name ) => `SUCCESS! New project ${project_name} has been created.`,
+		finished: ( project_name ) => `SUCCESS! New project ${project_name} have been created.`,
 		npm_start: 'Installing dependencies...',
 		npm_failed: 'Package install failed, see above.',
 		npm_finished: 'Installed packages for tooling via npm.',
+		stylesheets_start: 'Configuring preprocessor stylesheets...',
+		stylesheets_finished: 'Preprocessor have been configured.',
 	},
 
 	colors: {
@@ -20,7 +26,7 @@ const messages = {
 	settings: {
 		json_name: "pingue_cli.json",
 		json_save: "Saving settings...",
-		json_saved: "Settings file was saved",
+		json_saved: "Settings file saved.",
 	},
 
 	questions: {
@@ -35,5 +41,6 @@ const messages = {
 
 module.exports = {
 	repo,
-	messages
+	messages,
+	project_directories
 };

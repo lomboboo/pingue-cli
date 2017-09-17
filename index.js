@@ -3,9 +3,9 @@ const figlet = require( 'figlet' );
 const inquirer = require( 'inquirer' );
 const program = require( 'commander' );
 
-const { create } = require( './lib/commands/new' );
+const { create, removeOldStylesheets, insertDistStylesheets } = require( './lib/tasks/new' );
 const questions = require( './lib/questions/index' );
-const file = require( './lib/file' );
+const helper = require( './lib/helper' );
 const messages = require('./config').messages;
 
 let init = () => {
@@ -26,16 +26,18 @@ let init = () => {
 		.description( 'Create new project' )
 		.action( ( project_name ) => {
 			inquirer.prompt( questions ).then( answers => {
-				const project_directory = `${file.getCurrentDirectory()}/${project_name}`;
+				const project_directory = `${helper.getCurrentDirectory()}/${project_name}`;
 
 				let pingue_settings = {
 					preprocessor: answers.preprocessor,
 					port: answers.port,
 					bootstrap: answers.bootstrap
 				};
-				// file.saveJson( project_directory, pingue_settings );
+				// helper.saveJson( project_directory, pingue_settings );
 				create( project_name )
-					.then( () => file.saveJson( project_directory, pingue_settings ))
+					.then( () => helper.saveJson( project_directory, pingue_settings ))
+					.then( () => removeOldStylesheets( project_directory ))
+					.then( () => insertDistStylesheets( project_directory, answers.preprocessor ))
 					.then( () => {
 						process.stdout.write( '\n' );
 						console.log( chalk.green( messages.create.finished( project_name ) ) );
