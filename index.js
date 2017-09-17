@@ -33,16 +33,18 @@ let init = () => {
 				const project_directory = `${file.getCurrentDirectory()}/${project_name}`;
 
 				let pingue_settings = {
-					preprocessor: answers.preprocessor
+					preprocessor: answers.preprocessor,
+					port: answers.port
 				};
-				create( project_name )
+				file.saveJson( project_directory, pingue_settings );
+/*				create( project_name )
 					.then( () => file.saveJson( project_directory, pingue_settings ))
 					.then( () => {
 						process.stdout.write( '\n' );
 						console.log( chalk.green( messages.create.finished( project_name ) ) );
 						process.exit();
 					})
-					.catch( ( err ) => chalk.red( err ) );
+					.catch( ( err ) => chalk.red( err ) );*/
 			} );
 		} );
 
