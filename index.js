@@ -1,13 +1,16 @@
 #! /usr/bin/env node
+const path = require( 'path' );
 const chalk = require( 'chalk' );
 const figlet = require( 'figlet' );
 const inquirer = require( 'inquirer' );
 const program = require( 'commander' );
+const findConfig = require('find-config');
 
 const { create, removeOldStylesheets, insertDistStylesheets } = require( './lib/tasks/new' );
+const generate = require( './lib/tasks/generate' );
 const questions = require( './lib/questions/index' );
 const helper = require( './lib/helper' );
-const messages = require('./config').messages;
+const messages = require( './config' ).messages;
 
 let init = () => {
 
@@ -36,16 +39,31 @@ let init = () => {
 				};
 				// helper.saveJson( project_directory, pingue_settings );
 				create( project_name )
-					.then( () => helper.saveJson( project_directory, pingue_settings ))
-					.then( () => removeOldStylesheets( project_directory ))
-					.then( () => insertDistStylesheets( project_directory, answers.preprocessor ))
+					.then( () => helper.saveJson( project_directory, pingue_settings ) )
+					.then( () => removeOldStylesheets( project_directory ) )
+					.then( () => insertDistStylesheets( project_directory, answers.preprocessor ) )
 					.then( () => {
 						process.stdout.write( '\n' );
 						console.log( chalk.green( messages.create.finished( project_name ) ) );
 						process.exit();
-					})
+					} )
 					.catch( ( err ) => chalk.red( err ) );
 			} );
+		} );
+
+	program
+		.command( 'generate:page <page_name>' )
+		.alias( 'g:page' )
+		.description( 'Generate new page' )
+		.action( page_name => {
+			let cli_json_path = findConfig(messages.settings.json_name);
+			if ( !helper.issetConfig(cli_json_path) ) {
+				throw Error( chalk.red(messages.config.missing) );
+			}
+
+			let PROJECT_ROOT = path.dirname(cli_json_path);
+			generate
+				.page(PROJECT_ROOT, page_name);
 		} );
 
 	program.parse( process.argv );

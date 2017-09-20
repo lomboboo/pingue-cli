@@ -1,7 +1,14 @@
 const repo = 'https://github.com/lomboboo/webpack-typescript-boilerplate.git';
 
 const project_directories = {
-	stylesheets: 'src/stylesheets'
+	html: 'src',
+	ts: 'app',
+	stylesheets: `src/stylesheets`,
+	dist: {
+		ts: 'component.ts.dist',
+		html: 'component.html.dist',
+		stylesheet: 'component.dist',
+	}
 };
 
 const messages = {
@@ -17,6 +24,13 @@ const messages = {
 		npm_finished: 'Installed packages for tooling via npm.',
 		stylesheets_start: 'Configuring preprocessor stylesheets...',
 		stylesheets_finished: 'Preprocessor have been configured.',
+	},
+
+	generate: {
+		page_start: 'Generating and configuring new page...',
+		page_finish: 'New page have been created.',
+		component_exists: 'Component exists: ',
+		html: 'Html file created: '
 	},
 
 	colors: {
@@ -36,6 +50,10 @@ const messages = {
 		port_input_error: "Entered value must be a number and higher or equals 3000.",
 		bootstrap_choice_message: "Bootstrap version (3, 4):",
 		bootstrap_choice_error: "Please enter one of two possible options."
+	},
+
+	config: {
+		missing: "Project does not have pingue_cli.json file."
 	}
 };
 
