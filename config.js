@@ -2,12 +2,13 @@ const repo = 'https://github.com/lomboboo/webpack-typescript-boilerplate.git';
 
 const project_directories = {
 	html: 'src',
-	ts: 'app',
-	stylesheets: `src/stylesheets`,
+	ts: 'src/app',
+	stylesheet: `src/stylesheets`,
+	webpack_config: 'webpack.common.config.js',
 	dist: {
 		ts: 'component.ts.dist',
 		html: 'component.html.dist',
-		stylesheet: 'component.dist',
+		stylesheet: 'dist/component.dist',
 	}
 };
 
@@ -30,7 +31,10 @@ const messages = {
 		page_start: 'Generating and configuring new page...',
 		page_finish: 'New page have been created.',
 		component_exists: 'Component exists: ',
-		html: 'Html file created: '
+		html: 'Html file created: ',
+		stylesheet: 'Stylesheet file created: ',
+		ts: 'Typescript file created: ',
+		webpack: 'Webpack file have been updated.'
 	},
 
 	colors: {

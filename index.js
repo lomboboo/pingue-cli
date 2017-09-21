@@ -1,5 +1,6 @@
 #! /usr/bin/env node
 const path = require( 'path' );
+const fs = require( 'fs' );
 const chalk = require( 'chalk' );
 const figlet = require( 'figlet' );
 const inquirer = require( 'inquirer' );
@@ -57,13 +58,15 @@ let init = () => {
 		.description( 'Generate new page' )
 		.action( page_name => {
 			let cli_json_path = findConfig(messages.settings.json_name);
+			let cli_json = JSON.parse(fs.readFileSync(cli_json_path, 'utf-8'));
 			if ( !helper.issetConfig(cli_json_path) ) {
 				throw Error( chalk.red(messages.config.missing) );
 			}
 
 			let PROJECT_ROOT = path.dirname(cli_json_path);
+
 			generate
-				.page(PROJECT_ROOT, page_name);
+				.page(PROJECT_ROOT, page_name, cli_json);
 		} );
 
 	program.parse( process.argv );
