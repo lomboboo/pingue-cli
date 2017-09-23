@@ -5,7 +5,7 @@ const chalk = require( 'chalk' );
 const figlet = require( 'figlet' );
 const inquirer = require( 'inquirer' );
 const program = require( 'commander' );
-const findConfig = require('find-config');
+const findConfig = require( 'find-config' );
 
 const { create, removeOldStylesheets, insertDistStylesheets } = require( './lib/tasks/new' );
 const generate = require( './lib/tasks/generate' );
@@ -39,10 +39,8 @@ let init = () => {
 					bootstrap: answers.bootstrap
 				};
 				// helper.saveJson( project_directory, pingue_settings );
-				create( project_name )
+				create( project_directory, project_name, pingue_settings.preprocessor )
 					.then( () => helper.saveJson( project_directory, pingue_settings ) )
-					.then( () => removeOldStylesheets( project_directory ) )
-					.then( () => insertDistStylesheets( project_directory, answers.preprocessor ) )
 					.then( () => {
 						process.stdout.write( '\n' );
 						console.log( chalk.green( messages.create.finished( project_name ) ) );
@@ -57,16 +55,23 @@ let init = () => {
 		.alias( 'g:page' )
 		.description( 'Generate new page' )
 		.action( page_name => {
-			let cli_json_path = findConfig(messages.settings.json_name);
-			let cli_json = JSON.parse(fs.readFileSync(cli_json_path, 'utf-8'));
-			if ( !helper.issetConfig(cli_json_path) ) {
-				throw Error( chalk.red(messages.config.missing) );
+			let cli_json_path = findConfig( messages.settings.json_name );
+			let cli_json = JSON.parse( fs.readFileSync( cli_json_path, 'utf-8' ) );
+			if ( !helper.issetConfig( cli_json_path ) ) {
+				throw Error( chalk.red( messages.config.missing ) );
 			}
 
-			let PROJECT_ROOT = path.dirname(cli_json_path);
+			let PROJECT_ROOT = path.dirname( cli_json_path );
 
 			generate
-				.page(PROJECT_ROOT, page_name, cli_json);
+				.page( PROJECT_ROOT, page_name, cli_json )
+				.then( ( page_start_Spinner ) => page_start_Spinner.succeed( chalk.hex( messages.colors.light_green )( messages.generate.page_finish ) ) )
+				.catch( e => {
+					console.log( e );
+					process.exit();
+				} )
+			;
+
 		} );
 
 	program.parse( process.argv );
