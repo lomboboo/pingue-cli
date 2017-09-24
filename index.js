@@ -23,7 +23,7 @@ let init = () => {
 	);
 
 	program
-		.version( pjson.version )
+		.version( pjson.version, '-v, --version' )
 		.description( 'Pingue CLI fast up&run boilerplate' );
 
 	program
