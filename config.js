@@ -25,6 +25,7 @@ const messages = {
 		npm_finished: 'Installed packages for tooling via npm.',
 		stylesheets_start: 'Configuring preprocessor stylesheets...',
 		stylesheets_finished: 'Preprocessor have been configured.',
+		no_boilerplate_scss_files: 'Repository is not original. Missing files.',
 	},
 
 	generate: {
