@@ -1,4 +1,8 @@
+const path = require('path');
+
 const repo = 'https://github.com/lomboboo/webpack-typescript-boilerplate.git';
+
+const ROOT = __dirname;
 
 const project_directories = {
 	html: 'src',
@@ -6,9 +10,13 @@ const project_directories = {
 	stylesheet: `src/stylesheets`,
 	webpack_config: 'webpack.common.config.js',
 	dist: {
-		ts: 'component.ts.dist',
-		html: 'component.html.dist',
-		stylesheet: 'dist/component.dist',
+		ts: 'component.ts',
+		html: 'component.html',
+		stylesheet: 'component',
+		blueprints: {
+			new: 'blueprints/new',
+			component: 'blueprints/component'
+		}
 	}
 };
 
@@ -65,5 +73,6 @@ const messages = {
 module.exports = {
 	repo,
 	messages,
-	project_directories
+	project_directories,
+	ROOT
 };
