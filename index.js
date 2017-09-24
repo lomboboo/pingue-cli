@@ -7,7 +7,7 @@ const inquirer = require( 'inquirer' );
 const program = require( 'commander' );
 const findConfig = require( 'find-config' );
 
-const { create, removeOldStylesheets, insertDistStylesheets } = require( './lib/tasks/new' );
+const { create } = require( './lib/tasks/new' );
 const generate = require( './lib/tasks/generate' );
 const questions = require( './lib/questions/index' );
 const helper = require( './lib/helper' );
@@ -22,7 +22,7 @@ let init = () => {
 	);
 
 	program
-		.version( '1.0.0' )
+		.version( '1.0.4' )
 		.description( 'Pingue CLI fast up&run boilerplate' );
 
 	program
