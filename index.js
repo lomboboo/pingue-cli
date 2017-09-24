@@ -6,6 +6,7 @@ const figlet = require( 'figlet' );
 const inquirer = require( 'inquirer' );
 const program = require( 'commander' );
 const findConfig = require( 'find-config' );
+const pjson = require('./package.json');
 
 const { create } = require( './lib/tasks/new' );
 const generate = require( './lib/tasks/generate' );
@@ -22,7 +23,7 @@ let init = () => {
 	);
 
 	program
-		.version( '1.0.5' )
+		.version( pjson.version )
 		.description( 'Pingue CLI fast up&run boilerplate' );
 
 	program
