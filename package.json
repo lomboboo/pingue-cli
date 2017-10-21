@@ -1,6 +1,6 @@
 {
 	"name": "pingue-cli",
-	"version": "1.1.1",
+	"version": "1.1.2",
 	"bin": {
 		"pq": "./index.js"
 	},
